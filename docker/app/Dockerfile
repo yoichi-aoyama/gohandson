@@ -2,6 +2,7 @@ FROM golang:1.19.0 as builder
 WORKDIR /workspace
 COPY . /workspace
 
+# FIXME アプリケーションビルドをdocker imageから分離させる
 RUN CGO_ENABLED=0 GOOS=linux go build -o main cmd/api/main.go && chmod +x ./main
 
 FROM alpine:3.15
